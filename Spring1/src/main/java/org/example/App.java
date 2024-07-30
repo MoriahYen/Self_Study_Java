@@ -16,7 +16,7 @@ public class App
         System.out.println(obj1.getAge());
         obj1.code();
 
-        Computer com = context.getBean(Computer.class);
-        Desktop obj = context.getBean(Desktop.class);
+//        Computer com = context.getBean(Computer.class);
+//        Desktop obj = context.getBean(Desktop.class);
     }
 }

@@ -8,7 +8,11 @@
 <!--    <bean id = "alien1" class = "org.example.Alien" autowire="byName">-->
     <bean id = "alien1" class = "org.example.Alien" autowire="byType">
         <property name="age" value="21"/>
-        <property name="com" ref="com1"/>
+        <property name="com">
+<!--            inner bean for Alien，只能被Alien使用-->
+            <bean id = "com1" class = "org.example.Laptop" primary="true">
+            </bean>
+        </property>
 <!--        constructor如果沒有指定type,值是看順序-->
 <!--        <constructor-arg type="org.example.Laptop" ref="lap1"/>-->
 <!--        <constructor-arg type="int" value="21"/>-->
@@ -20,9 +24,9 @@
 <!--        <constructor-arg name="age" value="21"/>-->
     </bean>
 
-    <bean id = "com1" class = "org.example.Laptop" primary="true">
-    </bean>
+<!--    <bean id = "com1" class = "org.example.Laptop" primary="true">-->
+<!--    </bean>-->
 <!--    lazy-init: obj will not be creates by default-->
-    <bean class = "org.example.Desktop" lazy-init="true">
-    </bean>
+<!--    <bean class = "org.example.Desktop" lazy-init="true">-->
+<!--    </bean>-->
 </beans>
