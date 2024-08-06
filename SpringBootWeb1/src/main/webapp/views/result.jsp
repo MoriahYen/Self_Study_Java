@@ -10,6 +10,7 @@
 
         <!--  using jstl tags -->
         <p> ${alien}  </p>
+        <p> Welcome to ${course} World! </p>
 
     </body>
 </html>

@@ -4,12 +4,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
+    @ModelAttribute("course")
+    public String courseName() {
+        return "Java";
+    }
 
     @RequestMapping("/")
     public String home() {
@@ -31,16 +36,8 @@ public class HomeController {
     }
 
     @RequestMapping("addAlien")
-    // Spring is responsible to assign HttpServletRequest
-    public ModelAndView addAlien(@RequestParam("aid") int aid, @RequestParam("aname") String aname, ModelAndView mv) {
-
-        Alien alien = new Alien();
-        alien.setAid(aid);
-        alien.setAname(aname);
-
-        mv.addObject("alien",alien);
-        mv.setViewName("result");  // 否則抓不到
-
-        return mv;
+    // Let Spring to create this obj and then assign those two values which is coming from the browser
+    public String addAlien(Alien alien) {
+        return "result";
     }
 }
