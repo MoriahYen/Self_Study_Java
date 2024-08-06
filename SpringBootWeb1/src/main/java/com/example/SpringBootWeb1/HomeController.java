@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLOutput;
 
@@ -18,9 +19,9 @@ public class HomeController {
 
     @RequestMapping("add")
     // Spring is responsible to assign HttpServletRequest
-    public String add(HttpServletRequest req, HttpSession session) {
-        int num1 = Integer.parseInt(req.getParameter("num1"));
-        int num2 = Integer.parseInt(req.getParameter("num2"));
+    public String add(@RequestParam("num1") int num1, @RequestParam("num2") int num2, HttpSession session) {
+        // http://localhost:8080/add?num1=6&num2=7
+        // 因為paramaters的名稱和URL中的相同，所以可以直接用
         int result = num1 + num2;
 
         session.setAttribute("result", result);
