@@ -29,4 +29,18 @@ public class HomeController {
 
         return mv;
     }
+
+    @RequestMapping("addAlien")
+    // Spring is responsible to assign HttpServletRequest
+    public ModelAndView addAlien(@RequestParam("aid") int aid, @RequestParam("aname") String aname, ModelAndView mv) {
+
+        Alien alien = new Alien();
+        alien.setAid(aid);
+        alien.setAname(aname);
+
+        mv.addObject("alien",alien);
+        mv.setViewName("result");  // 否則抓不到
+
+        return mv;
+    }
 }
