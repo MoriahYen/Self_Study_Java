@@ -1,9 +1,13 @@
 package com.telusko.SpringDataJPAEx;
 
 import com.telusko.SpringDataJPAEx.model.Student;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+
+import java.sql.SQLOutput;
+import java.util.Optional;
 
 @SpringBootApplication
 public class SpringDataJpaExApplication {
@@ -17,21 +21,25 @@ public class SpringDataJpaExApplication {
 		Student s2 = context.getBean(Student.class);
 		Student s3 = context.getBean(Student.class);
 
-		s1.setRollNo(101);
-		s1.setName("Navin");
-		s1.setMarks(75);
+//		s1.setRollNo(101);
+//		s1.setName("Navin");
+//		s1.setMarks(75);
+//
+//		s2.setRollNo(102);
+//		s2.setName("Kiran");
+//		s2.setMarks(80);
+//
+//		s3.setRollNo(103);
+//		s3.setName("Harsh");
+//		s3.setMarks(70);
+//
+//		repo.save(s1);
+//		repo.save(s2);
+//		repo.save(s3);
 
-		s2.setRollNo(102);
-		s2.setName("Kiran");
-		s2.setMarks(80);
+		Optional<Student> s = repo.findById(103);
+		System.out.println(s.orElse(new Student()));
 
-		s3.setRollNo(103);
-		s3.setName("Harsh");
-		s3.setMarks(70);
-
-		repo.save(s1);
-		repo.save(s2);
-		repo.save(s3);
 	}
 
 }
